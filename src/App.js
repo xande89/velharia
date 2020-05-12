@@ -1,31 +1,30 @@
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
 
+class App extends Component {
 
-
-const app =(props) => {
-
-  const [initState, chState] = useState({
+  state = {
     persons:[
       {name:"Alexandre", age:31},
       {name:"michelle", age:41},
-      {name:"Yasmimi", age:11},
-    ]
-  });
-  const switchNameHandler = (newName) =>{
-    chState({
+      {name:"Yasmimi", age:11}
+    ],
+    showPersons: false
+  }
+  /// handlers###############################################################
+   switchNameHandler = (newName) =>{
+    this.setState({
       persons:[
         {name:newName, age:51},
         {name:"michelle", age:416},
         {name:"Yasmimi", age:151},
-      ],
-      showPersons: false
+      ]
     });
   };
-  const namechangedHandler = (event) =>{
-    chState({
+   namechangedHandler = (event) =>{
+    this.setState({
       persons:[
         {name:"alexandre", age:51},
         {name:event.target.value, age:416},
@@ -33,49 +32,52 @@ const app =(props) => {
       ]
     });
   }
-  const [anotheerState, chAnotherState] = useState("outro estado")
 
-  const style ={
-    backgroundColor:'#005500'
-  }
 
-  let person = null;
 
-  console.log(initState.showpersons)
-  if(initState.showPersons){
-    person=(
-      <div>
-      <Person
-        name={initState.persons[0].name}
-        age={initState.persons[0].age} />
-      <Person
-        name={initState.persons[1].name}
-        age={initState.persons[1].age}
-        click={switchNameHandler}
-        changed={namechangedHandler}/>
-      <Person
-        name={initState.persons[2].name}
-        age={initState.persons[2].age} />
-      </div>
-    )
-  }
-
-  const togglePersonHandler = () =>{
+   togglePersonHandler = () =>{
     console.log("clicked")
-    let showperson = initState.showPersons;
-     setState({showPersons : !showperson});
+    let doesShowPerson = this.state.showPersons;
+    //continuar daqui
+    this.setState({showPersons : !doesShowPerson});
   }
+  render () {
 
-  return (
-    <div className="App">
-      <button style={style} onClick={switchNameHandler.bind(this, "alexandre!!!")}>troca usando bind</button><br/>
-      <button onClick={() => switchNameHandler("alexandre2!!!")}>troca usando arrow function</button><br/>
-      <button onClick={togglePersonHandler}> toggle person</button>
-      {/*<button onClick={switchNameHandler}>troca</button>*/}
-      {person}
+  const  style ={
+      backgroundColor:'#005500'
+    }
 
-    </div>
-  );
+  let  person = null;
+
+
+    if(this.state.showPersons){
+      person=(
+        <div>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler}
+          changed={this.namechangedHandler}/>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
+        </div>
+      );
+    }
+    return (
+      <div className="App">
+        <button style={style} onClick={this.switchNameHandler.bind(this, "alexandre!!!")}>troca usando bind</button><br/>
+        <button onClick={() => this.switchNameHandler("alexandre2!!!")}>troca usando arrow function</button><br/>
+        <button onClick={this.togglePersonHandler}> toggle person</button>
+        {/*<button onClick={switchNameHandler}>troca</button>*/}
+        {person}
+
+      </div>
+    );
+  }
 }
 
-export default app;
+export default App;
