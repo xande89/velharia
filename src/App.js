@@ -7,9 +7,9 @@ class App extends Component {
 
   state = {
     persons:[
-      {name:"Alexandre", age:31},
-      {name:"michelle", age:41},
-      {name:"Yasmimi", age:11}
+      {id:'a', name:"Alexandre", age:31},
+      {id:'b', name:"michelle", age:41},
+      {id:'c', name:"Yasmimi", age:11}
     ],
     showPersons: false
   }
@@ -41,39 +41,36 @@ class App extends Component {
     //continuar daqui
     this.setState({showPersons : !doesShowPerson});
   }
+  deletePersonHandler = (index) =>{
+    const persons = [...this.state.persons];
+    persons.splice(index,1);
+    this.setState({persons:persons});
+  }
   render () {
 
   const  style ={
       backgroundColor:'#005500'
-    }
+  }
 
-  let  person = null;
+  let  persons = null;
 
 
-    if(this.state.showPersons){
-      person=(
+  if(this.state.showPersons){
+      persons=(
         <div>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age} />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler}
-          changed={this.namechangedHandler}/>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age} />
+        {this.state.persons.map((onePerson, index) =>{
+          return <Person name={onePerson.name} age={onePerson.age} click={()=>this.deletePersonHandler(index)} key={onePerson.id}/>
+        })}
         </div>
       );
-    }
-    return (
+  }
+  return (
       <div className="App">
         <button style={style} onClick={this.switchNameHandler.bind(this, "alexandre!!!")}>troca usando bind</button><br/>
         <button onClick={() => this.switchNameHandler("alexandre2!!!")}>troca usando arrow function</button><br/>
         <button onClick={this.togglePersonHandler}> toggle person</button>
         {/*<button onClick={switchNameHandler}>troca</button>*/}
-        {person}
+        {persons}
 
       </div>
     );
