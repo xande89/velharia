@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import './App.css';
-import Person from './Person/Person';
+import Persons from '../Persons/Persons';
+import Cockpit from '../Cockpit/Cockpit';
 
 class App extends Component {
 
@@ -23,20 +24,20 @@ class App extends Component {
       ]
     });
   };
-   namechangedHandler = (event, pKey) =>{
-    
-	const personIndex = persons.findIndex(p=>{
+  namechangedHandler = (event, pKey) =>{
+
+      const personIndex = this.state.persons.findIndex(p=>{
 		return p.id===pKey;
 	});
-	
+
 	const chdPerson = {...this.state.persons[personIndex]};
-	
+
 	chdPerson.name=event.target.value;
-	
+
 	const persons = [...this.state.persons];
-	
+
 	persons[personIndex]= chdPerson;
-	
+
 	this.setState({
       persons:persons
     });
@@ -57,7 +58,7 @@ class App extends Component {
   }
   render () {
 
-  const  style ={
+  const  buttonStyle ={
       backgroundColor:'#005500'
   }
 
@@ -65,27 +66,19 @@ class App extends Component {
 
 
   if(this.state.showPersons){
-      persons=(
-        <div>
-        {this.state.persons.map((onePerson, index) =>{
-          return <Person 
-					name={onePerson.name} 
-					age={onePerson.age} 
-					click={()=>this.deletePersonHandler(index)} 
-					key={onePerson.id} 
-					changed={(event)=>this.namechangedHandler(event, onePerson.id)}/>
-        })}
-        </div>
+      persons=(<Persons
+          persons={this.state.persons}
+			click={this.deletePersonHandler}
+			changed={this.namechangedHandler}/>
       );
   }
   return (
       <div className="App">
-        <button style={style} onClick={this.switchNameHandler.bind(this, "alexandre!!!")}>troca usando bind</button><br/>
-        <button onClick={() => this.switchNameHandler("alexandre2!!!")}>troca usando arrow function</button><br/>
-        <button onClick={this.togglePersonHandler}> toggle person</button>
-        {/*<button onClick={switchNameHandler}>troca</button>*/}
+        <Cockpit
+            style={buttonStyle}
+            namechange={() => this.switchNameHandler("alexandre2!!!")}
+            toggleperson={this.togglePersonHandler}/>
         {persons}
-
       </div>
     );
   }
