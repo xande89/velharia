@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-
+import NavigationBar from './NavigationBar/NavigationBar'
+import CardsPane from './CardsPane/CardsPane'
 class Cockpit extends Component{
 
   componentDidMount(){
-      
+      //TODO: aqui entra o Ajax
   }  
   render() {
       return(
-          <div>
-              <button style={this.props.style} onClick={this.props.namechange}>troca usando bind</button><br/>
-              <button onClick={this.props.namechange}>troca usando arrow function</button><br/>
-              <button onClick={this.props.toggleperson}> toggle person</button>
-
-          </div>
+        <React.Fragment>
+            <NavigationBar></NavigationBar>
+            <CardsPane></CardsPane>
+        </React.Fragment>
         );
     }
 }
