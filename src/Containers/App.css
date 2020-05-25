@@ -1,3 +1,13 @@
-.App {
+.App_Content {
   text-align: center;
+  align-content: center;
+}
+.App_Header{
+  height: 50px;
+  width: 100%;
+  background-color: #005;
+  color: #aaa;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }

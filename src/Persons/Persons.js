@@ -2,7 +2,18 @@ import React, {Component} from "react"
 import Person from "./Person/Person"
 
 class Persons extends Component{
-
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('Persons.js - ShouldComponent Update')
+        
+    //     if (this.props.persons !== nextProps.persons) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+   
+   
     render(){
         console.log("atualizou ")
         return(

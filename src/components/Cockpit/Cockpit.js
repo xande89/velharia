@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 
 class Cockpit extends Component{
 
+  componentDidMount(){
+      
+  }  
   render() {
       return(
           <div>
