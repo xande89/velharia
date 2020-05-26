@@ -7,7 +7,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 	state = {
-		isAuthenticated: false
+		isAuthenticated: true
     };
     static contextType = AuthContext;
 
@@ -27,7 +27,7 @@ class App extends Component {
                 <header className="App_Header">
                     Velharia
                 </header>
-                <div className="App_Content">
+                <div className="App_Content container">
                     {!this.context.isAuthenticated?
                     <LoginPane doLogin={this.doLogin}></LoginPane>
                     :<Cockpit/>}

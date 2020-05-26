@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import {Card, Button} from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap';
+import "./CardVelharia.css";
 
-class CardVelharia extends Component{
-    render(){
-        return(<Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>);
-    }
+class CardVelharia extends Component {
+  render() {
+    return (<Card style={{ width: '18rem' }} className="m-2 CardVelharia">
+      <Card.Img variant="top" src={this.props.img + "holder.js/100px180"} />
+      <Card.Body>
+        <Card.Title>{this.props.titulo}</Card.Title>
+        <Card.Text>
+          {this.props.descricao}</Card.Text>
+        <Button variant="primary" onClick={this.props.clicked}>Ver</Button>
+      </Card.Body>
+    </Card>);
+  }
 }
 export default CardVelharia;
