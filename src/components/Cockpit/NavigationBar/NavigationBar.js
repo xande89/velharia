@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav'
+import Nav from 'react-bootstrap/Nav';
+import {Link} from 'react-router-dom';
 
 class NavigationBar extends Component {
 
@@ -12,7 +13,7 @@ class NavigationBar extends Component {
         const listaLinksMenu = this.props.listaLinksDisponiveis.map((umLink)=>{
             return (
                 <Nav.Item key={umLink.key}>
-                    <Nav.Link eventKey={umLink.key}  onClick={(event)=>this.props.clicked(event,umLink.key)}>{umLink.descricao}</Nav.Link>
+                    <Link to={umLink.path} className="nav-link">{umLink.descricao}</Link>
                 </Nav.Item>                
             )
         })
