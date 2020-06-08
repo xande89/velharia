@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import NavigationBar from './NavigationBar/NavigationBar'
 import CardsPane from './CardsPane/CardsPane'
-import { Route, Link } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import NovaVelhariaPane from './NovaVelhariaPane/NovaVelhariaPane';
 import { BrowserRouter } from 'react-router-dom';
+import ComoFuncionaPane from './ComoFuncionaPane/ComoFuncionaPane';
 
-    const opcoesMenu=[
-        {descricao:"Cadastre sua Velharia", key:"link-1", path: "/cadastrarVelharia" },
-        {descricao:"Minha conta", key:"link-2", path:"/home" },
-        {descricao:"Minha fdsfdsfs conta", key:"link-4", path:"/home" }
-    ]
+const opcoesMenu=[
+    {descricao:"Cadastre sua Velharia", key:"link-1", path: "/cadastrarVelharia" },
+    {descricao:"Minha conta", key:"link-2", path:"/minha-conta" },
+    {descricao:"Como Funciona?", key:"link-3", path:"/como-funciona" }
+]
 class Cockpit extends Component {
     
     componentDidMount() {
@@ -29,6 +30,7 @@ class Cockpit extends Component {
                     <NavigationBar listaLinksDisponiveis={opcoesMenu} clicked={this.navBarClickedHandler}></NavigationBar>
                     <Route path="/home" exact component={CardsPane} />
                     <Route path="/cadastrarVelharia" exact component={NovaVelhariaPane} />
+                    <Route path="/como-funciona" exact component={ComoFuncionaPane} />
                 </BrowserRouter>
             </React.Fragment>
         );

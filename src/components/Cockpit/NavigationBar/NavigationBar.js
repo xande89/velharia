@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import './NavigationBar.css';
 
 class NavigationBar extends Component {
 
@@ -13,14 +14,14 @@ class NavigationBar extends Component {
         const listaLinksMenu = this.props.listaLinksDisponiveis.map((umLink)=>{
             return (
                 <Nav.Item key={umLink.key}>
-                    <Link to={umLink.path} className="nav-link">{umLink.descricao}</Link>
+                    <NavLink to={umLink.path} className="nav-link">{umLink.descricao}</NavLink>
                 </Nav.Item>                
             )
         })
         return (
-            <Nav variant="tabs" className="justify-content-center" activeKey="/home">
+            <Nav variant="tabs" className="justify-content-center NavigationBar" activeKey="/home">
                 <Nav.Item>
-                    <Nav.Link href="/home">Home</Nav.Link>
+                    <NavLink to="/home" className="nav-link">Home</NavLink>
                 </Nav.Item>
                 {listaLinksMenu}
             </Nav>
