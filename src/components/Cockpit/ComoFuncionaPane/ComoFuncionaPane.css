@@ -1,0 +1,8 @@
+.ComoFuncionaPane{
+    max-width: 60%;
+    text-align: left;
+    display: inline-block
+}
+.ComoFuncionaPane h1{
+    font-size: inherit;
+}
