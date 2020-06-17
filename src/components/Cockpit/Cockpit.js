@@ -5,11 +5,12 @@ import { Route} from 'react-router-dom';
 import NovaVelhariaPane from './NovaVelhariaPane/NovaVelhariaPane';
 import { BrowserRouter } from 'react-router-dom';
 import ComoFuncionaPane from './ComoFuncionaPane/ComoFuncionaPane';
-
+import MinhaContaPane from './MinhaContaPane/MinhaContaPane'
 const opcoesMenu=[
-    {descricao:"Cadastre sua Velharia", key:"link-1", path: "/cadastrarVelharia" },
-    {descricao:"Minha conta", key:"link-2", path:"/minha-conta" },
-    {descricao:"Como Funciona?", key:"link-3", path:"/como-funciona" }
+    {descricao:"Home", key:"link-0", path:"/home", component: CardsPane },
+    {descricao:"Cadastre sua Velharia", key:"link-1", path: "/cadastrarVelharia", component:NovaVelhariaPane },
+    {descricao:"Minha conta", key:"link-2", path:"/minha-conta", component: MinhaContaPane },
+    {descricao:"Como Funciona?", key:"link-3", path:"/como-funciona", component: ComoFuncionaPane}
 ]
 class Cockpit extends Component {
     
@@ -24,13 +25,14 @@ class Cockpit extends Component {
     }
     render() {
         
+        const menusRoute = opcoesMenu.map((umOpcaoMenu, index)=>{
+            return <Route path={umOpcaoMenu.path} exact key={umOpcaoMenu.key} component={umOpcaoMenu.component} />
+        })
         return (
             <React.Fragment>
                 <BrowserRouter>
                     <NavigationBar listaLinksDisponiveis={opcoesMenu} clicked={this.navBarClickedHandler}></NavigationBar>
-                    <Route path="/home" exact component={CardsPane} />
-                    <Route path="/cadastrarVelharia" exact component={NovaVelhariaPane} />
-                    <Route path="/como-funciona" exact component={ComoFuncionaPane} />
+                    {menusRoute}
                 </BrowserRouter>
             </React.Fragment>
         );

@@ -20,9 +20,6 @@ class NavigationBar extends Component {
         })
         return (
             <Nav variant="tabs" className="justify-content-center NavigationBar" activeKey="/home">
-                <Nav.Item>
-                    <NavLink to="/home" className="nav-link">Home</NavLink>
-                </Nav.Item>
                 {listaLinksMenu}
             </Nav>
         );

@@ -10,6 +10,8 @@ class CardsPane extends Component {
             {id:"asda",titulo:"Velharia1",img:"/imgv1", descricao:"descricao velharia 1"},
             {id:"dsf",titulo:"Velharia2",img:"/img/v2", descricao:"descricao velharia 2"},
             {id:"asdfsfda",titulo:"Velharia 3",img:"/img/v3", descricao:"descricao velharia 3"},
+            {id:"asdfsfsdfda",titulo:"Velharia 4",img:"/img/v4", descricao:"descricao velharia 3"},
+            {id:"asdfsffsdqda",titulo:"Velharia 5",img:"/img/v5", descricao:"descricao velharia 3"}
             
         ]
     }

@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 //import logo from '../logo.svg';
 import LoginPane from "../components/LoginPane/LoginPane";
 import './App.css';
-import AuthContext from '../contexts/auth-context';
+import {authContext} from '../contexts/app-context';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 	state = {
 		isAuthenticated: true
     };
-    static contextType = AuthContext;
+    static contextType = authContext;
 
     componentDidUpdate(prevProps, prevState){
         console.log("App.js-ComponentDIdUpdate:");
